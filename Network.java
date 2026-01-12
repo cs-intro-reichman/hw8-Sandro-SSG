@@ -56,10 +56,10 @@ public class Network {
         //// Replace the following statement with your code
         User u1 = getUser(name1);
         User u2 = getUser(name2);
-        if (u1 || u2 != null) return false;
+        if (u1 == null || u2 == null) return false;
         return u1.addFollowee(name2);
     }
-    
+
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
@@ -89,7 +89,7 @@ public class Network {
         return mostRecommendedUserToFollow.getName();
         }
 }
-    
+
 
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
@@ -99,7 +99,7 @@ public class Network {
         String pop = null;
         for(int i = 0; i < userCount; i++){
             User u = users[i];
-            int count = followeeCount(u.getName())
+            int count = followeeCount(u.getName());
             if(count > maxCount){
                 pop = u.getName();
                 maxCount = count;
