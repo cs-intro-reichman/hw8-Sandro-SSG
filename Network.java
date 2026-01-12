@@ -31,7 +31,7 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         for(int i = 0; i < userCount; i++ ){
-            if(name.equals(users[i].getName)) return users[i];
+            if(name.equals(users[i])) return users[i];
         }
         return null;
     }
@@ -54,13 +54,10 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        if (name1== null|| name2 == null) return false;
         User u1 = getUser(name1);
         User u2 = getUser(name2);
-        if (u1 == null || u2 == null) return false;
-        if (name1.equals(name2)) return false;
+        if (u1 || u2 != null) return false;
         return u1.addFollowee(name2);
-
     }
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
@@ -102,7 +99,7 @@ public class Network {
         String pop = null;
         for(int i = 0; i < userCount; i++){
             User u = users[i];
-            int count = followeeCount(u.getName());
+            int count = followeeCount(u.getName())
             if(count > maxCount){
                 pop = u.getName();
                 maxCount = count;
