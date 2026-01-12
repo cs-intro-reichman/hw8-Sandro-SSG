@@ -56,7 +56,7 @@ public class Network {
         //// Replace the following statement with your code
         User u1 = getUser(name1);
         User u2 = getUser(name2);
-        if (u1 != null || u2 != null) return false;
+        if (u1 == null || u2 == null) return false;
         return u1.addFollowee(name2);
     }
     
